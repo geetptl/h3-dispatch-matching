@@ -1,6 +1,6 @@
 # Dispatch matching application
 
-### Made with python, postgres, h3, docker and love ❤️
+### Made with python, flask, postgres, h3, docker and love ❤️
 
 ## How to run
 
@@ -18,11 +18,11 @@ This creates a stack of two containers.
    + `h3` is uber's open source geospatial indexing system. Documentation is available [here](https://h3geo.org/).
    + To use `h3` as a part of `postgres`, we use `h3-pg` package, which is available [here](https://github.com/zachasme/h3-pg). Thank you [Zacharias](https://github.com/zachasme) for making this!
    + [This dockerfile](./postgres/Dockerfile) takes care of installation such that the end product is a running database!
-2. Container `python` runs a flask app which contains the APIs.
+2. Container `python` runs a flask application which contains the APIs.
 
 ### Usage
 
-Open [`http://localhost:8000/status`](http://localhost:8000/status) to verify the working status. It will show 'Unable to reach database', while the `postgres` container is setting up the extensions. Once the `postgres` container is up, you should see 'Dispatch matching application is running'.
+Open [`localhost:8000`](http://localhost:8000/) to verify the status of the application container. Go to the status page to check the status of the database container. It might take a few moments for the database container to become running and reachable.
 
 When writing this, only this setup has been completed. Actual dispatch matching APIs are under construction 🛠️, but come back soon!
 

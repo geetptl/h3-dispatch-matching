@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 from sqlalchemy import create_engine, text
 
@@ -10,20 +10,28 @@ db_port = '5432'
 db_string = f'postgresql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}'
 db = create_engine(db_string)
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 
 
-@app.route('/status')
+@app.route("/")
+@app.route("/home")
+def home():
+    return render_template("home.html")
+
+
+@app.route("/status")
 def status():
+    running = False
+    answer = None
     try:
         connection = db.connect()
         result = connection.execute(text("SELECT h3_lat_lng_to_cell(POINT('37.3615593,-122.0553238'), 5);"))
         answer = result.all()[0][0]
         # answer should be 85e35e73fffffff
-        return f"<p>Dispatch matching application is running</p><p style='font-size:10'>{answer}</p>"
+        running = True
     except Exception as e:
         app.logger.error(e)
-        return "Unable to reach database"
+    return render_template("status.html", running=running, answer=answer)
 
 
 if __name__ == "__main__":

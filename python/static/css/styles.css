@@ -1,0 +1,16 @@
+.header {
+    background-color: #f5f5f5;
+    padding: 10px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.nav__link {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}

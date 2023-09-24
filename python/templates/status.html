@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Status{% endblock %}
+{% block heading %}Status{% endblock %}
+
+{% block content %}
+    {% if running %}
+        <p>Database reachable</p>
+        <p>{{ answer }}</p>
+    {% else %}
+        <p>Database not reachable</p>
+    {% endif %}
+{% endblock %}
