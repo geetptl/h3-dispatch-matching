@@ -20,10 +20,10 @@ def status():
         result = connection.execute(text("SELECT h3_lat_lng_to_cell(POINT('37.3615593,-122.0553238'), 5);"))
         answer = result.all()[0][0]
         # answer should be 85e35e73fffffff
-        return f"<p>Dispatch matching application is running.</p><p style='font-size:10'>{answer}</p>"
+        return f"<p>Dispatch matching application is running</p><p style='font-size:10'>{answer}</p>"
     except Exception as e:
         app.logger.error(e)
-        return "Unable to reach database."
+        return "Unable to reach database"
 
 
 if __name__ == "__main__":

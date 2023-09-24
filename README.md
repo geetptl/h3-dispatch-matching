@@ -22,7 +22,7 @@ This creates a stack of two containers.
 
 ### Usage
 
-Open [`http://localhost:8000/status`](http://localhost:8000/status) to verify the working status. It will show 'Unable to reach database.' while the `postgres` container is up and running. Once the `postgres` container is up, you should see 'Dispatch matching application is running.'
+Open [`http://localhost:8000/status`](http://localhost:8000/status) to verify the working status. It will show 'Unable to reach database', while the `postgres` container is setting up the extensions. Once the `postgres` container is up, you should see 'Dispatch matching application is running'.
 
 When writing this, only this setup has been completed. Actual dispatch matching APIs are under construction 🛠️, but come back soon!
 
