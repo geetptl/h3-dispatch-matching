@@ -1,4 +1,4 @@
-# Dispatch matching application
+# Dispatch Matching Application
 
 ### Made with python, flask, postgres, h3, docker and love ❤️
 
