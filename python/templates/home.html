@@ -4,4 +4,19 @@
 {% block heading %}Home{% endblock %}
 
 {% block content %}
+    <div id="map">
+        <script>
+            const map = L.map('map').setView([51.505, -0.09], 13);
+
+            {% for marker in markers %}
+                var marker = L.marker({{ marker[1] }}).addTo(map)
+                marker.bindPopup('{{ marker[0] }}').openPopup()
+            {% endfor %}
+
+            const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+        </script>
+    </div>
 {% endblock %}

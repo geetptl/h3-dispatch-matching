@@ -1,6 +1,6 @@
 # Dispatch Matching Application
 
-### Made with python, flask, postgres, h3, docker and love ❤️
+### Made with python, flask, postgres, h3, docker, openstreetmap and love ❤️
 
 ## How to run
 

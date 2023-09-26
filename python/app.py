@@ -16,7 +16,8 @@ app = Flask(__name__, template_folder="templates")
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template("home.html")
+    markers = [("user-1", [51.505, -0.09])]
+    return render_template("home.html", markers=markers)
 
 
 @app.route("/status")
@@ -25,9 +26,9 @@ def status():
     answer = None
     try:
         connection = db.connect()
-        lat, long = 37.3615593, -122.0553238
+        lat, lon = 37.3615593, -122.0553238
         result = connection.execute(
-            text(f"SELECT h3_lat_lng_to_cell(POINT('{lat},{long}'), 5);")
+            text(f"SELECT h3_lat_lng_to_cell(POINT('{lat},{lon}'), 5);")
         )
         answer = result.all()[0][0]
         # answer should be 85e35e73fffffff
@@ -35,6 +36,11 @@ def status():
     except Exception as e:
         app.logger.error(e)
     return render_template("status.html", running=running, answer=answer)
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 
 if __name__ == "__main__":
