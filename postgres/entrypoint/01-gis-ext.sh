@@ -1,0 +1,1 @@
+psql -U username -d db -c "create extension postgis;" -c "create extension postgis_raster;" -c "create extension postgis_topology;"

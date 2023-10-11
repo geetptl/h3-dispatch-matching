@@ -1,0 +1,1 @@
+pgxn load h3 -U username -d db

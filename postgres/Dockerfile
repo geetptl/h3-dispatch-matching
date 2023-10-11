@@ -10,8 +10,6 @@ RUN pgxn install h3
 
 RUN mkdir script
 
-RUN echo 'psql -U username -d db -c "create extension postgis;" -c "create extension postgis_raster;" -c "create extension postgis_topology;"' > /docker-entrypoint-initdb.d/01-gis_extensions.sh
-
-RUN echo 'pgxn load h3 -U username -d db' > /docker-entrypoint-initdb.d/02-load_h3.sh
+ADD entrypoint/* /docker-entrypoint-initdb.d/
 
 CMD ["postgres"]
