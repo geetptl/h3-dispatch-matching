@@ -4,19 +4,19 @@
 {% block heading %}Home{% endblock %}
 
 {% block content %}
-    <div id="map">
-        <script>
-            const map = L.map('map').setView([40.730843870155724, -73.99744568471118], 13);
+<div id="map">
+    <script>
+        const map = L.map('map').setView([40.730843870155724, -73.99744568471118], 13);
 
-            {% for marker in markers %}
-                var marker = L.marker({{ marker[1] }}).addTo(map)
-                marker.bindPopup('{{ marker[0] }}')
-            {% endfor %}
+        {% for marker in markers %}
+        var marker = L.marker({{ marker[1] }}).addTo(map)
+        marker.bindPopup('{{ marker[0] }}')
+        {% endfor %}
 
-            const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            }).addTo(map);
-        </script>
-    </div>
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+    </script>
+</div>
 {% endblock %}
