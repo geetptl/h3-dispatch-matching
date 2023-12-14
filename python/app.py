@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 
 from sqlalchemy import create_engine, text
+from sqlalchemy.exc import DBAPIError
 
 db_name = "db"
 db_user = "username"
@@ -35,7 +36,7 @@ def status():
         answer = result.all()[0][0]
         # answer should be 85f05ab7fffffff
         running = answer == "85f05ab7fffffff"
-    except Exception as e:
+    except DBAPIError as e:
         app.logger.error(e)
     return render_template("status.html", running=running, answer=answer)
 
