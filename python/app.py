@@ -18,7 +18,7 @@ app = Flask(__name__, template_folder="templates")
 @app.route("/home")
 def home():
     markers = [("user-1", [40.748449914335154, -73.98547985091737])]
-    return render_template("home.html", markers=markers)
+    return render_template("home.j2", markers=markers)
 
 
 @app.route("/status")
@@ -38,12 +38,12 @@ def status():
         running = answer == "85f05ab7fffffff"
     except DBAPIError as e:
         app.logger.error(e)
-    return render_template("status.html", running=running, answer=answer)
+    return render_template("status.j2", running=running, answer=answer)
 
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_template("about.j2")
 
 
 if __name__ == "__main__":
